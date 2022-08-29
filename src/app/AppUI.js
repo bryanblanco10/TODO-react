@@ -2,12 +2,13 @@ import React from "react";
 import { TodoContext } from "../todoContext/todoContext";
 // Components
 import { TodoCounter } from "../components/TodoCounter";
-import { TodoSearch } from "../components/TodoSearch";
+// import { TodoSearch } from "../components/TodoSearch";
 import { TodoList } from "../components/TodoList";
 import { TodoItem } from "../components/TodoItem";
 import { TodoCreateButton } from "../components/TodoCreateButton";
 import { Modal } from "../components/modal/Modal";
 import { TodoForm } from "../components/modal/TodoForm";
+import { Header } from "../components/header/Header";
 
 function AppUI() {
   const {
@@ -20,9 +21,11 @@ function AppUI() {
   } = React.useContext(TodoContext);
   return (
     <React.Fragment>
-      <TodoCounter />
+      <Header />
 
-      <TodoSearch />
+      <TodoCounter />
+      
+      {/* <TodoSearch /> */}
 
       <TodoList>
         {error && <p>Desesperate, hubo un error...</p>}
@@ -32,6 +35,7 @@ function AppUI() {
         {searchTodos.map((todo, index) => (
           <TodoItem
             text={todo.text}
+            status={todo.completed}
             key={index}
             onCompleted={onCompleted}
             onDeleted={() => onDeleted(todo.text)}

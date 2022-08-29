@@ -3,10 +3,10 @@ import React from "react";
 function TodoList(props) {
   return (
     <React.Fragment>
-      <section>
-        <ul>
+      <section className="section-app">
+        <div>
           {props.children}
-        </ul>
+        </div>
       </section>
     </React.Fragment>
   );

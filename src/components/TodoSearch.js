@@ -9,12 +9,14 @@ function TodoSearch() {
   }
   return (
     <React.Fragment>
-      <input 
-        onChange={onSearchValueChange} 
-        type="search"
-        value={searchValue}
-        placeholder="Buscar todo" 
-      />
+      <div className="search">
+        <input 
+          onChange={onSearchValueChange} 
+          type="search"
+          value={searchValue}
+          placeholder="Buscar todo"
+        />
+      </div>
     </React.Fragment>
   );
 };

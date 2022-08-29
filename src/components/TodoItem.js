@@ -1,13 +1,19 @@
 import React from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 
-function TodoItem({ text, onCompleted, onDeleted }) {
+function TodoItem({ text, status, onCompleted, onDeleted }) {
   return (
     <React.Fragment>
-      <li>
-        <span onClick={() => onCompleted(text)}>C</span>
-        <p>{text}</p>
-        <span onClick={onDeleted}>X</span>
-      </li>
+      <div className="card-app">
+        <span onClick={() => onCompleted(text)}>
+          <FontAwesomeIcon className={ status ? 'icon-check active' : 'icon-check'} icon={faCheckCircle} />
+        </span>
+        <p className="content-card-app">{text}</p>
+        <span onClick={onDeleted}>
+          <FontAwesomeIcon className="icon-delete" icon={faTrash} />
+        </span>
+      </div>
     </React.Fragment>
   );
 };
