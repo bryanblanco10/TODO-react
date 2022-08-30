@@ -15,6 +15,7 @@ label {
   font-size: 20px;
   color: #1E1E1F;
   margin-bottom: 26px;
+  font-family: var(--font-family-1);
 }
 
 textarea {
@@ -28,11 +29,12 @@ textarea {
   padding: 12px;
   height: 96px;
   width: calc(100% - 25px);
+  font-family: var(--font-family-1);
 }
 
 textarea::placeholder {
   color: #A5A5A5;
-  font-family: 'Montserrat';
+  font-family: var(--font-family-1);
   font-weight: 400;
 }
 
@@ -58,7 +60,7 @@ textarea:focus {
   height: 48px;
   border-radius: 2px;
   border: none;
-  font-family: 'Montserrat';
+  font-family: var(--font-family-1);
 }
 
 .TodoForm-button--add {

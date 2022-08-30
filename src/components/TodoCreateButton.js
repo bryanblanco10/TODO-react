@@ -1,5 +1,7 @@
 import React from "react";
 import { TodoContext } from "../todoContext/todoContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 function TodoCreateButton() {
   const { setOpenModal } = React.useContext(TodoContext);
@@ -11,7 +13,9 @@ function TodoCreateButton() {
 
   return (
     <React.Fragment>
-      <button onClick={() => onClickButton()}>+</button>
+      <button className="btnCreate" onClick={() => onClickButton()}>
+      <FontAwesomeIcon icon={faXmark} />
+      </button>
     </React.Fragment>
   );
 };
