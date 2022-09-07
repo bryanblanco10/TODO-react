@@ -63,6 +63,10 @@ input[type="search"]:focus {
   text-align: center;
 }
 
+.list-card {
+  width: 30%;
+}
+
 .card-app {
   display: flex;
   justify-content: space-between;

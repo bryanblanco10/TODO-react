@@ -1,6 +1,6 @@
 import React from "react";
 
-function TodoSearch({ searchValue, setSearchValue }) {
+function TodoSearch({ searchValue, setSearchValue, loading }) {
   const onSearchValueChange = (event) => {
     setSearchValue(event.target.value);
   }
@@ -11,6 +11,7 @@ function TodoSearch({ searchValue, setSearchValue }) {
           onChange={onSearchValueChange} 
           type="search"
           value={searchValue}
+          disabled={loading}
           placeholder="Buscar todo"
         />
       </div>

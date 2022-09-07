@@ -9,6 +9,9 @@ import { Modal } from "../components/modal/Modal";
 import { TodoForm } from "../components/modal/TodoForm";
 import { Header } from "../components/header/Header";
 import { TodoSearch } from "../components/TodoSearch";
+import { EmptyTodo } from "../components/messages/EmptyTodo";
+import { LoadingTodo } from "../components/messages/LoadingTodo";
+import { ErrorTodo } from "../components/messages/ErrorTodo";
 
 function App() {
   const {
@@ -27,15 +30,48 @@ function App() {
   } = useTodo();
   return (
     <React.Fragment>
-      <Header>
-        <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
+      {/* Composition */}
+      <Header loading={loading} >
+        <TodoSearch
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+        />
       </Header>
 
-      <TodoCounter completedTodos={completedTodos} totalTodos={totalTodos} />
+      <TodoCounter loading={loading} completedTodos={completedTodos} totalTodos={totalTodos} />
 
-      {/* <TodoSearch /> */}
+      {/* Renders props */}
+      <TodoList
+        error={error}
+        loading={loading}
+        searchTodos={searchTodos}
+        totalTodos={totalTodos}
+        onError={() => <ErrorTodo />}
+        onLoading={() => <LoadingTodo />}
+        onEmpty={() => <EmptyTodo />}
+        onEmptySearchResult={() => <p>No hay resultados para <strong>{searchValue}</strong></p>}
+        onTodo={(todo, index) => (
+          <TodoItem
+            text={todo.text}
+            status={todo.completed}
+            key={index}
+            onCompleted={onCompleted}
+            onDeleted={() => onDeleted(todo.text)}
+          />
+        )}
+      >
+        {searchTodos.map((todo, index) => (
+          <TodoItem
+            text={todo.text}
+            status={todo.completed}
+            key={index}
+            onCompleted={onCompleted}
+            onDeleted={() => onDeleted(todo.text)}
+          />
+        ))}
+      </TodoList>
 
-      <TodoList>
+      {/* <TodoList>
         {error && <p>Desesperate, hubo un error...</p>}
         {loading && <p>Estamos cargando, no te desesperes...</p>}
         {!loading && !searchTodos.length && <p>Crea tu primer TODO!</p>}
@@ -49,14 +85,11 @@ function App() {
             onDeleted={() => onDeleted(todo.text)}
           />
         ))}
-      </TodoList>
+      </TodoList> */}
 
       {openModal && (
         <Modal>
-          <TodoForm
-            addTodo={addTodo}
-            setOpenModal={setOpenModal}
-          />
+          <TodoForm addTodo={addTodo} setOpenModal={setOpenModal} />
         </Modal>
       )}
       <TodoCreateButton setOpenModal={setOpenModal} />
