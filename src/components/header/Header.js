@@ -7,7 +7,7 @@ function Header({ children, loading }) {
     // Cuando es un solo children
     // React.cloneElement(children, { loading })
     //Cuando son mas de un children
-    // React.Children.toArray(children).map(child => React.cloneElement(children, { loading }));
+    // React.Children.toArray(children).map(child => React.cloneElement(child, { loading }));
     <header>
       <div className="title-app">
         TODOAPP <FontAwesomeIcon icon={faCoffee} />
